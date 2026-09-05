@@ -1,205 +1,396 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ويبنار مجاني | فجر جديد</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* ============ BASE & RESET ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    <!-- ============ HEADER ============ -->
-    <header class="header">
-        <div class="logo">
-            <img src="img/logo.png" alt="logo">
-        </div>
-        <a href="session-en.html" class="lang-switch-btn">English</a>
-    </header>
+body {
+    background-color: #f7f9f8;
+    color: #2c3e50;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    <!-- Floating "scroll to top" button -->
-    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
+/* ============ HEADER ============ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
 
-    <!-- ============ HERO SECTION ============ -->
-    <section id="hero" class="hero">
-        <div class="herosub">
-            <span class="fj-badge">🌿 ويبنار مجاني | فجر جديد</span>
-            <h1 class="titel1">لما تنتهي العلاقة… ليش أحيانًا بيضل أثرها فينا؟</h1>
-            <h2 class="tital2">
-                يمكن العلاقة خلصت… بس بعدها في لوم، وجع، خوف، تردد، أو أشياء تغيّرت فيكِ بسببها.<br><br>
-                في هذا اللقاء المجاني رح نحكي عن الأثر النفسي للعلاقات المؤذية، وليش بعض آثارها بتضل معنا حتى بعد انتهاء العلاقة أو ابتعادنا عنها.
-            </h2>
-            <div class="herobutton">
-                <a href="#register">احجزي مكانكِ مجانًا 🤍</a>
-                <a href="#details">تفاصيل الويبنار</a>
-            </div>
-        </div>
-        <img src="img/ola pic.jpg" alt="علا طرابيه - لايف كوتش" class="heropic">
-    </section>
+.header.hide-header {
+    transform: translateY(-100%);
+}
 
-    <!-- ============ WEBINAR DETAILS SECTION ============ -->
-    <section id="details" class="process-section">
-        <h2 class="process-title">تفاصيل اللقاء المجاني 🤍</h2>
-        <p class="fj-desc">
-            إذا حاسة إنكِ خلصتي من العلاقة… بس لسه ما خلصتي من أثرها، هذا اللقاء إلكِ.
-        </p>
+.logo img {
+    height: 45px;
+}
 
-        <div class="fj-card-main">
-            <div class="fj-meta-info">
-                <div class="meta-item">
-                    <span class="icon">📅</span>
-                    <div>
-                        <small>الموعد</small>
-                        <strong>السبت 12 سبتمبر</strong>
-                    </div>
-                </div>
-                <div class="meta-item">
-                    <span class="icon">💻</span>
-                    <div>
-                        <small>المكان</small>
-                        <strong>لقاء أونلاين ومجاني</strong>
-                    </div>
-                </div>
-            </div>
+.lang-switch-btn {
+    text-decoration: none;
+    color: #4a6b5d;
+    border: 1px solid #4a6b5d;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-            <div class="fj-bonus-box">
-                <div class="bonus-icon">🎁</div>
-                <div>
-                    <strong>مفاجأة نهاية الويبنار:</strong>
-                    <p>خصم مميز جدًا للمشاركات على برنامج «فجر جديد»، بالإضافة إلى هدية خاصة لكل مشاركة.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+.lang-switch-btn:hover {
+    background-color: #4a6b5d;
+    color: #fff;
+}
 
-    <!-- ============ REGISTRATION FORM SECTION ============ -->
-    <section id="register" class="auth-page-wrap">
-        <div class="auth-card">
+/* ============ FLOATING BUTTON ============ */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #4a6b5d;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 
-            <div id="regFormView">
-                <h2 class="auth-title">احجزي مكانكِ مجانًا 🤍</h2>
-                <p class="auth-subtitle">سجلي بياناتكِ وسيتم إرسال رابط حضور الويبنار إليكِ قبل الموعد. 🌿</p>
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
 
-                <div class="auth-error" id="regError"></div>
+/* ============ HERO SECTION ============ */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 140px 8% 80px;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-                <form id="registerForm" novalidate>
-                    <div class="auth-field">
-                        <label for="regName">الاسم الكامل</label>
-                        <input type="text" id="regName" autocomplete="name" required>
-                    </div>
+.herosub {
+    flex: 1;
+}
 
-                    <div class="auth-field">
-                        <label for="regEmail">البريد الإلكتروني</label>
-                        <input type="email" id="regEmail" autocomplete="email" required>
-                    </div>
+.fj-badge {
+    display: inline-block;
+    background-color: #e8f0ec;
+    color: #3b5a4d;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
 
-                    <div class="auth-field">
-                        <label for="regPhone">رقم الهاتف</label>
-                        <div class="auth-phone-row">
-                            <select id="regCountryCode">
-                                <option value="+971" selected>🇦🇪 +971</option>
-                                <option value="+966">🇸🇦 +966</option>
-                                <option value="+965">🇰🇼 +965</option>
-                                <option value="+974">🇶🇦 +974</option>
-                                <option value="+973">🇧🇭 +973</option>
-                                <option value="+968">🇴🇲 +968</option>
-                                <option value="+20">🇪🇬 +20</option>
-                                <option value="+962">🇯🇴 +962</option>
-                                <option value="+961">🇱🇧 +961</option>
-                                <option value="+964">🇮🇶 +964</option>
-                                <option value="+963">🇸🇾 +963</option>
-                                <option value="+1">🇺🇸 +1</option>
-                                <option value="+44">🇬🇧 +44</option>
-                            </select>
-                            <input type="tel" id="regPhone" inputmode="numeric" autocomplete="tel-national" placeholder="5xxxxxxxx" required>
-                        </div>
-                    </div>
+.titel1 {
+    font-size: 2.2rem;
+    color: #23362e;
+    margin-bottom: 18px;
+    line-height: 1.3;
+}
 
-                    <button type="submit" id="submitBtn" class="auth-submit-btn">تأكيد التسجيل المجاني</button>
-                </form>
+.tital2 {
+    font-size: 1.05rem;
+    color: #55605a;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
 
-                <p class="fj-disclaimer">لقاء أونلاين للتوعية والدعم النفسي، وليس بديلًا عن العلاج النفسي الفردي.</p>
-            </div>
+.herobutton {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-            <div class="auth-success" id="regSuccessView">
-                <h2>تم تسجيل حضوركِ بنجاح ✓</h2>
-                <p>شكراً لتسجيلك! لقد تم تأكيد حجز مقعدكِ في <strong>الويبنار المجاني (فجر جديد)</strong>، وسنتواصل معكِ لتزويدكِ برابط الحضور.</p>
-            </div>
+.herobutton a {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-        </div>
-    </section>
+.herobutton a:first-child {
+    background-color: #4a6b5d;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(74, 107, 93, 0.25);
+}
 
-    <!-- ============ SCRIPT ============ -->
-    <script>
-        const backToTop = document.getElementById('backToTop');
-        const header = document.querySelector('.header');
+.herobutton a:first-child:hover {
+    background-color: #3b5a4d;
+}
 
-        let lastScrollY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 120) {
-                header.classList.add('hide-header');
-            } else {
-                header.classList.remove('hide-header');
-            }
-            lastScrollY = currentScrollY;
-            backToTop.classList.toggle('visible', currentScrollY > 400);
-        });
+.herobutton a:last-child {
+    background-color: transparent;
+    color: #4a6b5d;
+    border: 1px solid #4a6b5d;
+}
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+.herobutton a:last-child:hover {
+    background-color: #e8f0ec;
+}
 
-        const MY_PHONE = '971508780362'; 
-        const CALLMEBOT_API_KEY = '1268062';
+.heropic {
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
 
-        const errorBox = document.getElementById('regError');
-        function showError(message) {
-            errorBox.textContent = message;
-            errorBox.classList.add('visible');
-        }
-        function hideError() {
-            errorBox.classList.remove('visible');
-            errorBox.textContent = '';
-        }
+/* ============ DETAILS SECTION ============ */
+.process-section {
+    padding: 60px 8%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        document.getElementById('registerForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            hideError();
+.process-title {
+    font-size: 1.8rem;
+    color: #23362e;
+    margin-bottom: 12px;
+}
 
-            const name = document.getElementById('regName').value.trim();
-            const email = document.getElementById('regEmail').value.trim();
-            const countryCode = document.getElementById('regCountryCode').value;
-            const phoneDigits = document.getElementById('regPhone').value.trim();
-            const submitBtn = document.getElementById('submitBtn');
+.fj-desc {
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 1.05rem;
+}
 
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+.fj-card-main {
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+    border: 1px solid #eaeaea;
+    max-width: 750px;
+    margin: 0 auto;
+}
 
-            if (!name || !phoneDigits) {
-                showError('يرجى ملء جميع الحقول المطلوبة.');
-                return;
-            }
-            if (!emailPattern.test(email)) {
-                showError('يرجى إدخال بريد إلكتروني صحيح.');
-                return;
-            }
+.fj-meta-info {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'جاري الإرسال...';
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: right;
+}
 
-            const phone = countryCode + ' ' + phoneDigits;
-            const sessionTitle = "الويبنار المجاني | فجر جديد";
-            const textMessage = `تسجيل جديد في الويبنار المجاني!\nنوع الفعالية: ${sessionTitle}\nالاسم: ${name}\nالبريد: ${email}\nالهاتف: ${phone}`;
+html[dir="ltr"] .meta-item {
+    text-align: left;
+}
 
-            const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=${MY_PHONE}&text=${encodeURIComponent(textMessage)}&apikey=${CALLMEBOT_API_KEY}`;
+.meta-item .icon {
+    font-size: 1.8rem;
+}
 
-            const img = new Image();
-            img.src = apiUrl;
+.meta-item small {
+    display: block;
+    color: #888;
+    font-size: 0.85rem;
+}
 
-            setTimeout(() => {
-                document.getElementById('regFormView').style.display = 'none';
-                document.getElementById('regSuccessView').classList.add('active');
-            }, 1000);
-        });
-    </script>
-</body>
-</html>
+.meta-item strong {
+    color: #23362e;
+    font-size: 1.1rem;
+}
+
+.fj-bonus-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #fcf8f2;
+    border: 1px dashed #e6c896;
+    padding: 18px 25px;
+    border-radius: 15px;
+    text-align: right;
+}
+
+html[dir="ltr"] .fj-bonus-box {
+    text-align: left;
+}
+
+.bonus-icon {
+    font-size: 2rem;
+}
+
+.fj-bonus-box strong {
+    color: #b37414;
+}
+
+/* ============ REGISTRATION FORM ============ */
+#register {
+    padding: 60px 8% 100px;
+}
+
+.auth-page-wrap {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea;
+}
+
+.auth-title {
+    font-size: 1.6rem;
+    color: #23362e;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.auth-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-field {
+    margin-bottom: 20px;
+}
+
+.auth-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+.auth-field input, .auth-phone-row select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.auth-field input:focus, .auth-phone-row select:focus {
+    border-color: #4a6b5d;
+}
+
+.auth-phone-row {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-phone-row select {
+    width: 120px;
+    background-color: #fff;
+}
+
+.auth-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #4a6b5d;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-submit-btn:hover {
+    background-color: #3b5a4d;
+}
+
+.auth-submit-btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.fj-disclaimer {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.auth-error {
+    background-color: #fde8e8;
+    color: #c53030;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.auth-error.visible {
+    display: block;
+}
+
+.auth-success {
+    display: none;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.auth-success.active {
+    display: block;
+}
+
+.auth-success h2 {
+    color: #2e7d32;
+    margin-bottom: 12px;
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        padding-top: 110px;
+        text-align: center;
+    }
+    .heropic {
+        width: 260px;
+        height: 260px;
+    }
+    .herobutton {
+        justify-content: center;
+    }
+    .fj-meta-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}

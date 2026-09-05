@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <!-- ============ HEADER ============ -->
     <header class="header">
-        <div class="logo"><img src="img/logo.png" alt="logo"></div>
+        <div class="logo">
+            <img src="img/logo.png" alt="logo">
+        </div>
         <a href="session-en.html" class="lang-switch-btn">English</a>
     </header>
 
     <!-- Floating "scroll to top" button -->
     <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">↑</button>
 
-    <!-- ============ HERO ============ -->
+    <!-- ============ HERO SECTION ============ -->
     <section id="hero" class="hero">
         <div class="herosub">
             <span class="fj-badge">🌿 ويبنار مجاني | فجر جديد</span>
@@ -33,15 +36,14 @@
         <img src="img/ola pic.jpg" alt="علا طرابيه - لايف كوتش" class="heropic">
     </section>
 
-    <!-- ============ WEBINAR DETAILS ============ -->
+    <!-- ============ WEBINAR DETAILS SECTION ============ -->
     <section id="details" class="process-section">
         <h2 class="process-title">تفاصيل اللقاء المجاني 🤍</h2>
         <p class="fj-desc">
             إذا حاسة إنكِ خلصتي من العلاقة… بس لسه ما خلصتي من أثرها، هذا اللقاء إلكِ.
         </p>
 
-        <!-- Bonus & Date Box -->
-        <div class="fj-card-main" style="margin-top: 2rem;">
+        <div class="fj-card-main">
             <div class="fj-meta-info">
                 <div class="meta-item">
                     <span class="icon">📅</span>
@@ -59,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="fj-bonus-box" style="margin-top: 1.5rem;">
+            <div class="fj-bonus-box">
                 <div class="bonus-icon">🎁</div>
                 <div>
                     <strong>مفاجأة نهاية الويبنار:</strong>
@@ -69,59 +71,60 @@
         </div>
     </section>
 
-    <!-- ============ REGISTRATION FORM ============ -->
-    <section id="register">
-        <div class="auth-page-wrap">
-            <div class="auth-card">
+    <!-- ============ REGISTRATION FORM SECTION ============ -->
+    <section id="register" class="auth-page-wrap">
+        <div class="auth-card">
 
-                <div id="regFormView">
-                    <h2 class="auth-title">احجزي مكانكِ مجانًا 🤍</h2>
-                    <p class="auth-subtitle">سجلي بياناتكِ وسيتم إرسال رابط حضور الويبنار إليكِ قبل الموعد. 🌿</p>
+            <div id="regFormView">
+                <h2 class="auth-title">احجزي مكانكِ مجانًا 🤍</h2>
+                <p class="auth-subtitle">سجلي بياناتكِ وسيتم إرسال رابط حضور الويبنار إليكِ قبل الموعد. 🌿</p>
 
-                    <div class="auth-error" id="regError"></div>
+                <div class="auth-error" id="regError"></div>
 
-                    <form id="registerForm" novalidate>
-                        <div class="auth-field">
-                            <label for="regName">الاسم الكامل</label>
-                            <input type="text" id="regName" autocomplete="name" required>
+                <form id="registerForm" novalidate>
+                    <div class="auth-field">
+                        <label for="regName">الاسم الكامل</label>
+                        <input type="text" id="regName" autocomplete="name" required>
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="regEmail">البريد الإلكتروني</label>
+                        <input type="email" id="regEmail" autocomplete="email" required>
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="regPhone">رقم الهاتف</label>
+                        <div class="auth-phone-row">
+                            <select id="regCountryCode">
+                                <option value="+971" selected>🇦🇪 +971</option>
+                                <option value="+966">🇸🇦 +966</option>
+                                <option value="+965">🇰🇼 +965</option>
+                                <option value="+974">🇶🇦 +974</option>
+                                <option value="+973">🇧🇭 +973</option>
+                                <option value="+968">🇴🇲 +968</option>
+                                <option value="+20">🇪🇬 +20</option>
+                                <option value="+962">🇯🇴 +962</option>
+                                <option value="+961">🇱🇧 +961</option>
+                                <option value="+964">🇮🇶 +964</option>
+                                <option value="+963">🇸🇾 +963</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+44">🇬🇧 +44</option>
+                            </select>
+                            <input type="tel" id="regPhone" inputmode="numeric" autocomplete="tel-national" placeholder="5xxxxxxxx" required>
                         </div>
-                        <div class="auth-field">
-                            <label for="regEmail">البريد الإلكتروني</label>
-                            <input type="email" id="regEmail" autocomplete="email" required>
-                        </div>
-                        <div class="auth-field">
-                            <label for="regPhone">رقم الهاتف</label>
-                            <div class="auth-phone-row">
-                                <select id="regCountryCode">
-                                    <option value="+971" selected>🇦🇪 +971</option>
-                                    <option value="+966">🇸🇦 +966</option>
-                                    <option value="+965">🇰🇼 +965</option>
-                                    <option value="+974">🇶🇦 +974</option>
-                                    <option value="+973">🇧🇭 +973</option>
-                                    <option value="+968">🇴🇲 +968</option>
-                                    <option value="+20">🇪🇬 +20</option>
-                                    <option value="+962">🇯🇴 +962</option>
-                                    <option value="+961">🇱🇧 +961</option>
-                                    <option value="+964">🇮🇶 +964</option>
-                                    <option value="+963">🇸🇾 +963</option>
-                                    <option value="+1">🇺🇸 +1</option>
-                                    <option value="+44">🇬🇧 +44</option>
-                                </select>
-                                <input type="tel" id="regPhone" inputmode="numeric" autocomplete="tel-national" placeholder="5xxxxxxxx" required>
-                            </div>
-                        </div>
-                        <button type="submit" id="submitBtn" class="auth-submit-btn">تأكيد التسجيل المجاني</button>
-                    </form>
+                    </div>
 
-                    <p class="fj-disclaimer">لقاء أونلاين للتوعية والدعم النفسي، وليس بديلًا عن العلاج النفسي الفردي.</p>
-                </div>
+                    <button type="submit" id="submitBtn" class="auth-submit-btn">تأكيد التسجيل المجاني</button>
+                </form>
 
-                <div class="auth-success" id="regSuccessView">
-                    <h2>تم تسجيل حضوركِ بنجاح ✓</h2>
-                    <p>شكراً لتسجيلك! لقد تم تأكيد حجز مقعدكِ في <strong>الويبنار المجاني (فجر جديد)</strong>، وسنتواصل معكِ لتزويدكِ برابط الحضور.</p>
-                </div>
-
+                <p class="fj-disclaimer">لقاء أونلاين للتوعية والدعم النفسي، وليس بديلًا عن العلاج النفسي الفردي.</p>
             </div>
+
+            <div class="auth-success" id="regSuccessView">
+                <h2>تم تسجيل حضوركِ بنجاح ✓</h2>
+                <p>شكراً لتسجيلك! لقد تم تأكيد حجز مقعدكِ في <strong>الويبنار المجاني (فجر جديد)</strong>، وسنتواصل معكِ لتزويدكِ برابط الحضور.</p>
+            </div>
+
         </div>
     </section>
 
@@ -141,7 +144,10 @@
             lastScrollY = currentScrollY;
             backToTop.classList.toggle('visible', currentScrollY > 400);
         });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         const MY_PHONE = '971508780362'; 
         const CALLMEBOT_API_KEY = '1268062';
@@ -181,10 +187,7 @@
             submitBtn.textContent = 'جاري الإرسال...';
 
             const phone = countryCode + ' ' + phoneDigits;
-
-            // اسم الفعالية للتفرقة بوضوح في رسائل الواتساب
             const sessionTitle = "الويبنار المجاني | فجر جديد";
-
             const textMessage = `تسجيل جديد في الويبنار المجاني!\nنوع الفعالية: ${sessionTitle}\nالاسم: ${name}\nالبريد: ${email}\nالهاتف: ${phone}`;
 
             const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=${MY_PHONE}&text=${encodeURIComponent(textMessage)}&apikey=${CALLMEBOT_API_KEY}`;

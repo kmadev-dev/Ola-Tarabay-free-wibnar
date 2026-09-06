@@ -51,6 +51,20 @@
                     </div>
                 </div>
                 <div class="meta-item">
+                    <span class="icon">⏰</span>
+                    <div>
+                        <small>Time</small>
+                        <strong>7:00 PM (UAE Time)</strong>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="icon">⏳</span>
+                    <div>
+                        <small>Duration</small>
+                        <strong>1 Hour</strong>
+                    </div>
+                </div>
+                <div class="meta-item">
                     <span class="icon">💻</span>
                     <div>
                         <small>Location</small>
@@ -181,9 +195,7 @@
             submitBtn.textContent = 'Sending...';
 
             const phone = countryCode + ' ' + phoneDigits;
-
             const sessionTitle = "Free Webinar | New Dawn";
-
             const textMessage = `New Free Webinar Registration!\nEvent: ${sessionTitle}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`;
 
             const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=${MY_PHONE}&text=${encodeURIComponent(textMessage)}&apikey=${CALLMEBOT_API_KEY}`;

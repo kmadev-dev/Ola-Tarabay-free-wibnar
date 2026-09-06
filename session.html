@@ -51,6 +51,20 @@
                     </div>
                 </div>
                 <div class="meta-item">
+                    <span class="icon">⏰</span>
+                    <div>
+                        <small>الوقت</small>
+                        <strong>7:00 مساءً (بتوقيت الإمارات)</strong>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <span class="icon">⏳</span>
+                    <div>
+                        <small>المدة</small>
+                        <strong>ساعة واحدة</strong>
+                    </div>
+                </div>
+                <div class="meta-item">
                     <span class="icon">💻</span>
                     <div>
                         <small>المكان</small>
@@ -181,10 +195,7 @@
             submitBtn.textContent = 'جاري الإرسال...';
 
             const phone = countryCode + ' ' + phoneDigits;
-
-            // اسم الفعالية للتفرقة بوضوح في رسائل الواتساب
             const sessionTitle = "الويبنار المجاني | فجر جديد";
-
             const textMessage = `تسجيل جديد في الويبنار المجاني!\nنوع الفعالية: ${sessionTitle}\nالاسم: ${name}\nالبريد: ${email}\nالهاتف: ${phone}`;
 
             const apiUrl = `https://api.callmebot.com/whatsapp.php?phone=${MY_PHONE}&text=${encodeURIComponent(textMessage)}&apikey=${CALLMEBOT_API_KEY}`;
